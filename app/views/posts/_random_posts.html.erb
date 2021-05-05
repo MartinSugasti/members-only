@@ -1,0 +1,9 @@
+<nav class="panel">
+	<p class="panel-heading">Go to a random post</p>
+
+	<% Post.order("RANDOM()").limit(5).each do |post| %>
+		<a class="panel-block" href="#<%= post.id %>">
+			<%= post.body[0...30] << '...' %>
+		</a>
+	<% end %>
+</nav>

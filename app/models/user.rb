@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates_presence_of :name, :username
   validates_length_of :name, minimum: 3, maximum: 50, allow_blank: false
   validates_length_of :username, minimum: 3, maximum: 50, allow_blank: false
+
+  has_many :posts, dependent: :destroy
 end

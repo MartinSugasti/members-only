@@ -1,0 +1,15 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <% if user_signed_in? %>
+          <%= render 'profile' %>
+        <% end %>
+        <%= render 'random_posts' %>
+      </div>
+
+      <%= render 'feed' %>
+      <%= render 'random_users' %>
+    </div>
+  </div>
+</section>

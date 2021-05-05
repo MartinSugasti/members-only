@@ -1,0 +1,27 @@
+<div class="column">
+	<nav class="panel">
+		<% if user_signed_in? %>
+			<p class="panel-heading">Go to user's last post</p>
+		<% else %>
+			<p class="panel-heading">Log in to see posts authors</p>
+		<% end %>
+
+		<% User.order("RANDOM()").limit(5).each do |user| %>
+			<% anchor = user_signed_in? ? user.username : '' %>
+			<%= link_to anchor: anchor do %>
+				<div class="panel-block">
+					<article class="media">
+						<div class="media-content">
+							<div class="content">
+								<p>
+									<strong><%= user.name %></strong>
+									<small>@<%= user.username %></small>
+								</p>
+							</div>
+						</div>
+					</article>
+				</div>
+			<% end %>
+		<% end %>
+	</nav>
+</div>

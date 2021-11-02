@@ -2,8 +2,6 @@ import consumer from "./consumer"
 
 document.addEventListener("turbolinks:load", function () {
   const postsList = document.getElementById("posts-list");
-  console.log(postsList);
-
 
   consumer.subscriptions.create("PostsChannel", {
     connected() {

@@ -11,10 +11,12 @@ class PostsController < ApplicationController
   def edit; end
 
   def create
-    @post = current_user.posts.new(post_params)
+    @post = current_user.posts.includes(:user).new(post_params)
 
     if @post.save
       flash[:notice] = 'Post was successfully created.'
+
+      ActionCable.server.broadcast 'posts_channel', { post: @post, user: current_user }
     else
       flash[:alert] = 'Post could not been created.'
     end
